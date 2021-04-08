@@ -5,13 +5,21 @@ using UnityEngine;
 public class RadioAccionable : Accionable
 {
     public GameObject arrow;
+    Quaternion rotacionInicial;
+    private void Awake()
+    {
+        rotacionInicial = arrow.transform.rotation;
+    }
     public override void Accionar()
     {
-        arrow.transform.rotation = Quaternion.Euler(Vector3.zero);
-    }
-
-    public override void Desaccionar()
-    {
-        throw new System.NotImplementedException();
+        if (!activo)
+        {
+            arrow.transform.rotation = Quaternion.Euler(Vector3.zero);
+            activo = true;
+        } else
+        {
+            arrow.transform.rotation = rotacionInicial;
+            activo = false;
+        }
     }
 }

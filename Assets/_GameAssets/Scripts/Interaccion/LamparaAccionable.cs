@@ -6,11 +6,15 @@ public class LamparaAccionable : Accionable
 {
     public override void Accionar()
     {
-        GetComponentInChildren<Light>().enabled = true;
-    }
-
-    public override void Desaccionar()
-    {
-        throw new System.NotImplementedException();
+        if (!activo)
+        {
+            GetComponentInChildren<Light>().enabled = true;
+            activo = true;
+        } else
+        {
+            GetComponentInChildren<Light>().enabled = false;
+            activo = false;
+        }
+        
     }
 }

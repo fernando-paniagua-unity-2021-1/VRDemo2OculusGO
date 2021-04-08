@@ -4,6 +4,6 @@ using UnityEngine;
 
 public abstract class Accionable : MonoBehaviour
 {
+    public bool activo = false;
     public abstract void Accionar();
-    public abstract void Desaccionar();
 }

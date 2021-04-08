@@ -5,15 +5,17 @@ using UnityEngine;
 public class PantallaAccionable : Accionable
 {
     public Material materialEncendido;
+    public Material materialApagado;
     public override void Accionar()
     {
-        GetComponent<MeshRenderer>().material = materialEncendido;
+        if (!activo)
+        {
+            GetComponent<MeshRenderer>().material = materialEncendido;
+            activo = true;
+        } else {
+            GetComponent<MeshRenderer>().material = materialApagado;
+            activo = false;
+        }
     }
-
-    public override void Desaccionar()
-    {
-        throw new System.NotImplementedException();
-    }
-
     
 }

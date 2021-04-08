@@ -6,12 +6,23 @@ public class Weapon : MonoBehaviour
 {
     public GameObject prefabProyectil;
     public Transform spawnPoint;
+    private DetectorObjetosVR dovr;
+    private void Start()
+    {
+        dovr = GetComponentInChildren<DetectorObjetosVR>();
+    }
 
     void Update()
     {
         if (HaApretadoElGatillo())
         {
-            Disparar();
+            if (!dovr.HaySeleccion())
+            {
+                Disparar();
+            }
+            {
+                dovr.AccionarObjeto();
+            }
         }
     }
     bool HaApretadoElGatillo()
